@@ -53,6 +53,12 @@ class TextStyles {
     return TextStyle(fontWeight: FontWeight.w800, fontFamily: primaryFont);
   }
 
+  TextStyle get textPrimaryFontExtraBoldPrimaryColor {
+    return textPrimaryFontExtraBold.copyWith(
+      color: ColorsApp.instance.primary,
+    );
+  }
+
   TextStyle get labelTextField {
     return textSecondaryFontRegular.copyWith(
       color: ColorsApp.instance.greyDark,
