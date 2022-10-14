@@ -64,6 +64,20 @@ class TextStyles {
       color: ColorsApp.instance.greyDark,
     );
   }
+
+  TextStyle get titleWhite {
+    return textPrimaryFontBold.copyWith(
+      fontSize: 22,
+      color: Colors.white,
+    );
+  }
+
+  TextStyle get titleBlack {
+    return textPrimaryFontBold.copyWith(
+      fontSize: 22,
+      color: Colors.black,
+    );
+  }
 }
 
 extension TextStylesExtensions on BuildContext {
