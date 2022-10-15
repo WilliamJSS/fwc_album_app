@@ -95,7 +95,9 @@ class _RegisterPageState extends RegisterViewImpl {
                       validator: Validatorless.multiple([
                         Validatorless.required('Obrigatório'),
                         Validatorless.min(
-                            6, 'Senha deve conter pelo menos 6 caracteres'),
+                          6,
+                          'Senha deve conter pelo menos 6 caracteres',
+                        ),
                       ]),
                     ),
                     const SizedBox(height: 20),
@@ -108,15 +110,18 @@ class _RegisterPageState extends RegisterViewImpl {
                       validator: Validatorless.multiple([
                         Validatorless.required('Obrigatório'),
                         Validatorless.min(
-                            6, 'Senha deve conter pelo menos 6 caracteres'),
+                          6,
+                          'Senha deve conter pelo menos 6 caracteres',
+                        ),
                         Validatorless.compare(
-                            passwordEC, 'As senhas devem ser iguais')
+                          passwordEC,
+                          'As senhas devem ser iguais',
+                        )
                       ]),
                     ),
                     const SizedBox(height: 20),
                     Button.primary(
                       onPressed: () {
-
                         final formValid =
                             formKey.currentState?.validate() ?? false;
 
