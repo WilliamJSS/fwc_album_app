@@ -5,10 +5,22 @@ import 'package:fwc_album_app/app/core/ui/styles/colors_app.dart';
 import 'package:fwc_album_app/app/core/ui/styles/text_styles.dart';
 import 'package:fwc_album_app/app/pages/home/components/status_tile.dart';
 import 'package:fwc_album_app/app/pages/home/components/sticker_percent_widget.dart';
+import 'package:fwc_album_app/app/pages/home/presenter/home_presenter.dart';
+import 'package:fwc_album_app/app/pages/home/view/home_view_impl.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  final HomePresenter presenter;
 
+  const HomePage({
+    super.key,
+    required this.presenter,
+  });
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends HomeViewImpl {
   @override
   Widget build(BuildContext context) {
     final screen = MediaQuery.of(context).size;
@@ -51,29 +63,31 @@ class HomePage extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        const StickerPercentWidget(percent: 45),
+                        StickerPercentWidget(
+                          percent: user?.totalCompletePercent ?? 0,
+                        ),
                         const SizedBox(height: 20),
                         Text(
-                          '45 Figurinhas',
+                          '${user?.totalStickers ?? 0} Figurinhas',
                           style: context.textStyles.titleWhite,
                         ),
                         const SizedBox(height: 20),
                         StatusTile(
                           icon: Image.asset('assets/images/all_icon.png'),
                           label: 'Todas',
-                          value: 34,
+                          value: user?.totalAlbum ?? 0,
                         ),
                         const SizedBox(height: 20),
                         StatusTile(
                           icon: Image.asset('assets/images/missing_icon.png'),
                           label: 'Faltando',
-                          value: 567,
+                          value: user?.totalComplete ?? 0,
                         ),
                         const SizedBox(height: 20),
                         StatusTile(
                           icon: Image.asset('assets/images/repeated_icon.png'),
                           label: 'Repetidas',
-                          value: 30,
+                          value: user?.totalDuplicates ?? 0,
                         ),
                         const SizedBox(height: 20),
                         Button(
