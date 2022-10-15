@@ -28,7 +28,11 @@ abstract class HomeViewImpl extends State<HomePage>
 
   @override
   void logoutSuccess() {
-    // TODO: implement logoutSuccess
+    hideLoader();
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      '/auth/login',
+      (route) => false,
+    );
   }
 
   @override
