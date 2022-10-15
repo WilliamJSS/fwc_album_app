@@ -53,6 +53,7 @@ class TextStyles {
     return TextStyle(fontWeight: FontWeight.w800, fontFamily: primaryFont);
   }
 
+  // Other styles
   TextStyle get textPrimaryFontExtraBoldPrimaryColor {
     return textPrimaryFontExtraBold.copyWith(
       color: ColorsApp.instance.primary,
@@ -76,6 +77,13 @@ class TextStyles {
     return textPrimaryFontBold.copyWith(
       fontSize: 22,
       color: Colors.black,
+    );
+  }
+
+  TextStyle get titlePrimaryColor {
+    return textPrimaryFontBold.copyWith(
+      fontSize: 22,
+      color: ColorsApp.instance.primary,
     );
   }
 }
