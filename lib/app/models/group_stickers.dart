@@ -8,7 +8,7 @@ class GroupStickers {
   final int id;
   final String countryCode;
   final String countryName;
-  final int stickerStart;
+  final int stickersStart;
   final int stickersEnd;
   final List<UserStickerModel> stickers;
   final String flag;
@@ -17,7 +17,7 @@ class GroupStickers {
     required this.id,
     required this.countryCode,
     required this.countryName,
-    required this.stickerStart,
+    required this.stickersStart,
     required this.stickersEnd,
     required this.stickers,
     required this.flag,
@@ -26,9 +26,9 @@ class GroupStickers {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'countryCode': countryCode,
-      'countryName': countryName,
-      'stickers_start': stickerStart,
+      'country_code': countryCode,
+      'country_name': countryName,
+      'stickers_start': stickersStart,
       'stickers_end': stickersEnd,
       'stickers': stickers.map((x) => x.toMap()).toList(),
       'flag': flag,
@@ -38,12 +38,12 @@ class GroupStickers {
   factory GroupStickers.fromMap(Map<String, dynamic> map) {
     return GroupStickers(
       id: map['id'] as int,
-      countryCode: map['countryCode'] as String,
-      countryName: map['countryName'] as String,
-      stickerStart: map['stickers_start'] as int,
+      countryCode: map['country_code'] as String,
+      countryName: map['country_name'] as String,
+      stickersStart: map['stickers_start'] as int,
       stickersEnd: map['stickers_end'] as int,
       stickers: List<UserStickerModel>.from(
-        (map['stickers'] as List<int>).map<UserStickerModel>(
+        (map['stickers'] as List<dynamic>).map<UserStickerModel>(
           (x) => UserStickerModel.fromMap(x as Map<String, dynamic>),
         ),
       ),

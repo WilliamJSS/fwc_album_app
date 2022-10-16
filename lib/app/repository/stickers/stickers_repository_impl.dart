@@ -19,7 +19,9 @@ class StickersRepositoryImpl implements StickersRepository {
   Future<List<GroupStickers>> getMyAlbum() async {
     try {
       final result = await dio.auth().get('/api/countries');
-      return result.data.map((g) => GroupStickers.fromMap(g)).toList();
+      return result.data
+          .map<GroupStickers>((g) => GroupStickers.fromMap(g))
+          .toList();
     } on DioError catch (e, s) {
       log('Erro ao buscar album do usuario', error: e, stackTrace: s);
       throw RepositoryException(message: 'Erro ao buscar album do usuario');
