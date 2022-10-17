@@ -10,4 +10,10 @@ abstract class StickerDetailPresenter extends FwcPresenter<StickerDetailView> {
     required String countryName,
     UserStickerModel? stickerUser,
   });
+
+  void incrementAmount();
+  void decrementAmount();
+
+  Future<void> saveSticker();
+  Future<void> deleteSticker();
 }

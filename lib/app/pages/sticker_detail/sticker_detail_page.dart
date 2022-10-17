@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
 
 import 'package:fwc_album_app/app/core/ui/components/button.dart';
@@ -49,7 +49,10 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
                     ),
                   ),
                   const Spacer(),
-                  RoundedButton(icon: Icons.remove, onPressed: () {}),
+                  RoundedButton(
+                    icon: Icons.remove,
+                    onPressed: widget.presenter.decrementAmount,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
@@ -57,7 +60,10 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
                       style: context.textStyles.textSecondaryFontMedium,
                     ),
                   ),
-                  RoundedButton(icon: Icons.add, onPressed: () {}),
+                  RoundedButton(
+                    icon: Icons.add,
+                    onPressed: widget.presenter.incrementAmount,
+                  ),
                 ],
               ),
               Container(
@@ -69,12 +75,13 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
                 ),
               ),
               Button.primary(
-                label: 'Adicionar figurinha',
-                onPressed: () {},
+                label:
+                    hasSticker ? 'Atualizar figurinha' : 'Adicionar figurinha',
+                onPressed: widget.presenter.saveSticker,
                 width: screen.width * .9,
               ),
               Button(
-                onPressed: () {},
+                onPressed: widget.presenter.deleteSticker,
                 style: context.buttonStyles.primaryOutlinedButton,
                 outlined: true,
                 label: 'Excluir figurinha',
